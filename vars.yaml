@@ -1,0 +1,11 @@
+vlans:
+  - 10
+  - 100
+  - 240
+interfaces:
+  - interface: Ethernet1/15
+    hostname: acc6-aiec-ovx-1 GPU00
+  - interface: Ethernet1/16
+    hostname: acc6-aiec-ovx-1 GPU01
+  - interface: Ethernet1/17
+    hostname: acc6-aiec-ovx-1 GPU02

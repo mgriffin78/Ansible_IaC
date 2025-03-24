@@ -1,0 +1,6 @@
+ansible_user: admin
+ansible_httpapi_pass: 1L@bu$3r!!
+ansible_connection: httpapi
+ansible_network_os: nxos
+ansible_httpapi_use_ssl: yes
+ansible_httpapi_validate_certs: no

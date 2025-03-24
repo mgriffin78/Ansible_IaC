@@ -1,0 +1,38 @@
+---
+- hosts: nexus_switches
+  gather_facts: false  # Nexus devices don't typically require facts gathering
+
+  vars:
+    documentation_directory: "./documentation" # Replace with your desired path
+    graph_filename: "network_diagram.png" # Name for the diagram file
+
+  tasks:
+
+    - name: Gather Switch Configuration Data
+      cisco.nxos.nxos_facts:
+        gather_subset: all
+        available_network_resources: true
+      register: switch_facts
+
+    - name: Print Results
+      debug:
+        var: switch_facts
+
+    - name: Generate DOT file for Graphviz (using ansible_net_neighbors)
+      blockinfile:
+        path: ./topology.dot
+        create: yes
+        block: |
+          digraph G {
+            rankdir=LR;
+            {% for host in groups['nexus_switches'] %}
+               "{{ host }}" [label="{{ host }}"];
+               {% if ansible_facts[host]['ansible_net_neighbors'] is defined %} # Check if defined!
+               {% for neighbor_interface, neighbor_data in ansible_facts[host]['ansible_net_neighbors'].items() %}
+               {% for neighbor in neighbor_data %} # Iterate through neighbors on the same interface
+                "{{ host }}" -> "{{ neighbor.neighbor_name }}" [label="{{ neighbor_interface }}-{{ neighbor.neighbor_port }}"];
+              {% endfor %}
+            {% endfor %}
+          {% endif %}
+          {% endfor %}
+          }

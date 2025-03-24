@@ -1,0 +1,7 @@
+# BEGIN ANSIBLE MANAGED BLOCK
+digraph G {
+  rankdir=LR;
+       "10.245.100.3" [label="10.245.100.3"];
+          "10.245.100.4" [label="10.245.100.4"];
+     }
+# END ANSIBLE MANAGED BLOCK
