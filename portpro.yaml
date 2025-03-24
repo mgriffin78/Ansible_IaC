@@ -6,7 +6,7 @@
   tasks:
 
     - name: Gather Switch Configuration Data
-      cisco.nxos.nxos_facts:
+      nxos_facts:
         gather_subset: all
         available_network_resources: true
       register: switch_facts
