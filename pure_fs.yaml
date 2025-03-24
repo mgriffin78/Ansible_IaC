@@ -1,0 +1,19 @@
+---
+- name: Create a Filesystem on Pure Storage FlashBlade
+  hosts: Pure
+  gather_facts: false
+  tasks:
+    - name: Create a new filesystem
+      purestorage.flashblade.purefb_fs:
+        name: "{{ filesystem_name }}"
+        size: "{{ filesystem_size }}"
+        fb_url: "{{ pure_fb_url }}"
+        api_token: "{{ api_token }}"  # Variable from inventory
+        state: present
+        hard_limit: true
+        nfs_rules:
+          - access: 'rw'
+            client: '192.168.1.0/24'
+            permission: 'root-squash'
+        snapshot_enabled: true
+        fast_remove: true
