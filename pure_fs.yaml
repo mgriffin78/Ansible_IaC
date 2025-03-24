@@ -15,5 +15,5 @@
           - access: 'rw'
             client: '192.168.1.0/24'
             permission: 'root-squash'
-        snapshot_enabled: true
-        fast_remove: true
+        snapshot: true
+        fastremove: true
