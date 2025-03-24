@@ -1,6 +1,6 @@
 ---
 - name: Create a Filesystem on Pure Storage FlashBlade
-  hosts: Pure
+  hosts: localhost
   gather_facts: false
   tasks:
     - name: Create a new filesystem
