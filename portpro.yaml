@@ -1,0 +1,35 @@
+---
+- hosts: nexus_switches
+  gather_facts: false
+  vars_files:
+    - vars.yaml
+  tasks:
+
+    - name: Gather Switch Configuration Data
+      cisco.nxos.nxos_facts:
+        gather_subset: all
+        available_network_resources: true
+      register: switch_facts
+
+    - name: Gather facts and place into a file
+      ansible.builtin.copy:
+        content: "{{ switch_facts }}"
+        dest: "./{{ inventory_hostname }}_version.txt"
+
+    - name: Print Results
+      debug:
+        var: switch_facts
+
+    - name: Configure RoCE on 100Gb interface
+      cisco.nxos.nxos_config:
+        lines:
+          - description {{ item.hostname }}
+          - switchport mode trunk
+          - switchport trunk allowed vlan {{ vlans | join(', ') }}
+          - no shutdown
+          - mtu 9216
+          - priority-flow-control mode on
+        parents: interface {{ item.interface }}
+        save_when: modified
+      loop: "{{ interfaces }}"
+      register: result
