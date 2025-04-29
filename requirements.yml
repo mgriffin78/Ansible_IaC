@@ -1,3 +1,5 @@
 collections:
   - name: cisco.nxos
   - name: purestorage.flashblade
+  - name: Ansible.Netcommon
+  - name: Ansible.Utils
