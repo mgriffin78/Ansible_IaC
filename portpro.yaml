@@ -5,20 +5,20 @@
   # - vars.yaml
   tasks:
 
-    - name: Gather Switch Configuration Data
-      nxos_facts:
-        gather_subset: all
-        available_network_resources: true
-      register: switch_facts
+    #- name: Gather Switch Configuration Data
+    #  nxos_facts:
+    #    gather_subset: all
+    #    available_network_resources: true
+    #  register: switch_facts
 
-    - name: Gather facts and place into a file
-      ansible.builtin.copy:
-        content: "{{ switch_facts }}"
-        dest: "./{{ inventory_hostname }}_version.txt"
+    #- name: Gather facts and place into a file
+    #  ansible.builtin.copy:
+    #    content: "{{ switch_facts }}"
+    #    dest: "./{{ inventory_hostname }}_version.txt"
 
-    - name: Print Results
-      debug:
-        var: switch_facts
+    #- name: Print Results
+    #  debug:
+    #    var: switch_facts
 
     - name: Configure RoCE on 100Gb interface
       cisco.nxos.nxos_config:
