@@ -10,6 +10,6 @@
           - name: Ethernet1/18
             description: "Configured by Ansible - Trunk Port to Server XYZ"
             enabled: true # Ensures 'no shutdown' is set
-            mode: trunk
+            mode: layer2
             mtu: 9216 # Example: Setting Jumbo MTU
             trunk_allowed_vlans: "10,100,240" # Allowed VLANs on the trunk
