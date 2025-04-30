@@ -12,4 +12,4 @@
             enabled: true # Ensures 'no shutdown' is set
             mode: layer2
             mtu: 9216 # Example: Setting Jumbo MTU
-            trunk_allowed_vlans: "10,100,240" # Allowed VLANs on the trunk
+            
