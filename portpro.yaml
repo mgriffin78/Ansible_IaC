@@ -26,9 +26,9 @@
           - description {{ item.hostname }}
           - switchport mode trunk
           - switchport trunk allowed vlan {{ vlans | join(', ') }}
-          - no shutdown
-          - mtu 9216
           - priority-flow-control mode on
+          - mtu 9216
+          - no shutdown
         parents: interface {{ item.interface }}
         save_when: modified
       loop: "{{ interfaces }}"
