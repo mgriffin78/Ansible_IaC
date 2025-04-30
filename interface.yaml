@@ -12,4 +12,8 @@
             enabled: true # Ensures 'no shutdown' is set
             mode: layer2
             mtu: 9216 # Example: Setting Jumbo MTU
+
+    - name: Pause for 30 seconds
+      ansible.builtin.pause:
+        seconds: 30
             
