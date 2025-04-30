@@ -1,0 +1,26 @@
+---
+- hosts: linux
+  gather_facts: false
+
+  tasks:
+    - name: Verify Slurmd Service on Ubuntu
+      hosts: all  # Or specify a group/host in your inventory
+      become: true  # Run tasks with elevated privileges (sudo)
+      gather_facts: false # avoid gathering facts to speed up execution
+    
+      tasks:
+        - name: Check Slurmd Service Status
+          ansible.builtin.systemd:
+            name: slurmd
+            state: started  # Check if the service is running
+          register: slurmd_status  # Store the result in a variable
+    
+        - name: Display Slurmd Status
+          ansible.builtin.debug:
+            msg: "Slurmd service is {{ slurmd_status.status.active }}"
+          when: slurmd_status.changed == false # only show if status check did not change anything
+    
+        - name: Fail if Slurmd is not running
+          ansible.builtin.fail:
+            msg: "Slurmd service is not running!"
+          when: slurmd_status.status.active != "active" # changed to use the registered variable
