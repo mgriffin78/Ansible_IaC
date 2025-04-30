@@ -1,0 +1,15 @@
+---
+- name: Configure NX-OS Interface
+  hosts: nxos
+  gather_facts: false
+
+  tasks:
+    - name: Configure Ethernet1/18 as a Trunk Port
+      cisco.nxos.nxos_interfaces:
+        config:
+          - name: Ethernet1/18
+            description: "Configured by Ansible - Trunk Port to Server XYZ"
+            enabled: true # Ensures 'no shutdown' is set
+            mode: trunk
+            mtu: 9216 # Example: Setting Jumbo MTU
+            trunk_allowed_vlans: "10,100,240" # Allowed VLANs on the trunk
