@@ -20,7 +20,7 @@
         name: "zs-login-node-cat-test"
         fsmounts:
           - device: "10.245.100.140:{{ catfs }}"
-            mountpoint: "/mnt/filesystem""
+            mountpoint: "/mnt/filesystem"
             filesystem: "nfs"
             mountoptions: defaults
 #           dump: false
