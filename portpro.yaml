@@ -25,6 +25,7 @@
       cisco.nxos.nxos_config:
         lines:
           - description {{ item.hostname }}
+          - switchport
           - switchport mode trunk
           - switchport trunk allowed vlan {{ vlans | join(', ') }}
           - priority-flow-control mode on
