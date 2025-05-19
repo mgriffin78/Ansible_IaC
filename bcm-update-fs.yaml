@@ -1,14 +1,14 @@
 - name: BCM Ansible module demo
   hosts: bcm
   collections:
-   - brightcomputing.bcm100
+    - brightcomputing.bcm100
   gather_facts: false
   tasks:
-   - name: Retrieve all categories information
-     category_info:
-       depth: 1
-       format: dict
-     register: categories_info
+    - name: Retrieve all categories information
+      category_info:
+        depth: 1
+        format: dict
+      register: categories_info
 
     - name: Debug all categories information
       debug:
