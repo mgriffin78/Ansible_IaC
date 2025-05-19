@@ -17,7 +17,7 @@
 #          revisionID: <integer>
     - name: Mount an NFS share to FS mount in a Category
       category:
-        name: "zs-login-node-cat-test"
+        name: "{{ catname }}"
         fsmounts:
            device: "10.245.100.140:/{{ catfs }}"
            mountpoint: "/mnt/{{ catfs }}"
