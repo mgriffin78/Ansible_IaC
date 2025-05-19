@@ -19,11 +19,6 @@
       category:
         name: "zs-login-node-cat-test"
         fsmounts:
-          - device: "10.245.100.140:/{{ catfs }}"
-            mountpoint: "/mnt/{{ catfs }}"
-            filesystem: "nfs"
-            mountoptions: defaults
-#           dump: false
-#           extra_values: null
-#           fsck: NONE
-#           rdma: false
+           device: "10.245.100.140:/{{ catfs }}"
+           mountpoint: "/mnt/{{ catfs }}"
+           filesystem: "nfs"
