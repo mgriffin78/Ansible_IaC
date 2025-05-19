@@ -2,6 +2,7 @@ collections:
   - name: cisco.nxos
     version: 9.2.1
   - name: purestorage.flashblade
+  - name: brightcomputing.bcm100
   - name: ansible.netcommon
     version: 7.1.0
   - name: ansible.utils
