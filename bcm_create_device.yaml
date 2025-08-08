@@ -35,7 +35,7 @@
 
     - name: Create a new login node device
       physical_node:
-        #hostname: "{{ devicename }}"
+        hostname: "{{ devicename }}"
         cloneFrom: slurm4
         category: "{{ catname }}" 
         mac: "{{ devicemac }}" 
