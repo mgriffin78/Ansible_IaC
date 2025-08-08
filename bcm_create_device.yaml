@@ -44,5 +44,4 @@
         interfaces_NetworkPhysicalInterface:
           - name: BOOTIF
             network: internalnet
-            ip: 0.0.0.0
             dhcp: true
