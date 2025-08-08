@@ -37,5 +37,6 @@
       generic_device:
         hostname: "{{ devicename }}"
         #category: "{{ catname }}" 
-        mac: "{{ devicemac }}"    # Optional, but recommended for provisioning
+        mac: "{{ devicemac }}" 
+        partition: "ACC6 AI Experience Center"
         state: present
