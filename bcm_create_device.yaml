@@ -10,7 +10,7 @@
     catfs: "shared-apps"
     devicename: "login01"
     devicemac: "00:11:22:33:44:55" # Optional: MAC address for the new device
-
+    clone: slurm4
   tasks:
     - name: Create login node category
       category:
@@ -36,7 +36,7 @@
     - name: Create a new login node device
       physical_node:
         hostname: "{{ devicename }}"
-        cloneFrom: slurm4
+        cloneFrom: "{{ clone }}"
         category: "{{ catname }}" 
         mac: "{{ devicemac }}" 
         partition: "base"
