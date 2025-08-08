@@ -34,9 +34,9 @@
             filesystem: "nfs"
 
     - name: Create a new login node device
-      generic_device:
+      physical_node:
         hostname: "{{ devicename }}"
-        #category: "{{ catname }}" 
+        category: "{{ catname }}" 
         mac: "{{ devicemac }}" 
         partition: "base"
         state: present
