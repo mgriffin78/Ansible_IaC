@@ -44,4 +44,4 @@
         interfaces_NetworkPhysicalInterface:
           - name: BOOTIF
             network: internalnet
-            dhcp: true
+            ip: 10.245.100.45
