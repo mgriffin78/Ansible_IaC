@@ -41,8 +41,4 @@
         mac: "{{ devicemac }}" 
         partition: "base"
         state: present
-        interfaces_NetworkPhysicalInterface:
-          - name: BOOTIF
-            network: internalnet
-            ip: 10.245.100.45
-            mac: "00:50:56:92:10:c2"
+
