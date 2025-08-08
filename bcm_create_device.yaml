@@ -1,0 +1,42 @@
+- name: BCM Ansible module Demo
+  hosts: bcm
+  gather_facts: false
+  collections:
+    - brightcomputing.bcm100
+
+  # Define all variables in one place for easy management
+  vars:
+    catname: "login-nodes"
+    catfs: "shared-apps"
+    devicename: "login01"
+    devicemac: "00:11:22:33:44:55" # Optional: MAC address for the new device
+
+  tasks:
+    - name: Create login node category
+      category:
+        name: "{{ catname }}"
+        cloneFrom: default
+        state: present
+
+    - name: Assign software image to login node category
+      category:
+        name: "{{ catname }}"
+        softwareImageProxy:
+          parentSoftwareImage: "login-image"
+#         revisionID: <integer>
+
+    - name: Mount an NFS share to FS mount in a Category
+      category:
+        name: "{{ catname }}"
+        fsmounts:
+          - device: "10.245.100.140:/{{ catfs }}"
+            mountpoint: "/mnt/{{ catfs }}"
+            filesystem: "nfs"
+
+    # --- NEW TASK ADDED BELOW ---
+    - name: Create a new login node device
+      device:
+        name: "{{ devicename }}"
+        category: "{{ catname }}" # Assigns this device to the category created above
+        mac: "{{ devicemac }}"    # Optional, but recommended for provisioning
+        state: present
