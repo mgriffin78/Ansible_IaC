@@ -32,9 +32,6 @@
           - device: "10.245.100.140:/{{ catfs }}"
             mountpoint: "/mnt/{{ catfs }}"
             filesystem: "nfs"
-          - device: "10.245.100.140:/bcmshared"
-            mountpoint: "/cm/shared"
-            filesystem: "nfs"
 
     - name: Create a new login node device
       physical_node:
