@@ -38,5 +38,5 @@
         hostname: "{{ devicename }}"
         #category: "{{ catname }}" 
         mac: "{{ devicemac }}" 
-        partition: "base - ACC6 AI Experience Center"
+        partition: "base"
         state: present
