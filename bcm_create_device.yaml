@@ -33,10 +33,9 @@
             mountpoint: "/mnt/{{ catfs }}"
             filesystem: "nfs"
 
-    # --- NEW TASK ADDED BELOW ---
     - name: Create a new login node device
-      device:
-        name: "{{ devicename }}"
-        category: "{{ catname }}" # Assigns this device to the category created above
+      generic_device:
+        hostname: "{{ devicename }}"
+        #category: "{{ catname }}" 
         mac: "{{ devicemac }}"    # Optional, but recommended for provisioning
         state: present
